@@ -1,30 +1,30 @@
-import java.util.*;
-
 public class TelcoAllowance implements UsagePromo {
-
-    private static Map<String, Double, Int, Boolean> allowanceMap = new HashMap<>();
-
-    static {
-
-        allowanceMap.put(Smart, 500.0, 15, false);
-        allowanceMap.put(Globe, 450.0, 10, true);
-        allowanceMap.put(Ditto, 400.0, 8, true);
-
-    }
 
     @Override
     public String showAllowance(String telcoName, double money) {
-        double allowanceValue = allowanceMap.getOrDefault(telcoName, 0.0);
         
-        if (allowanceValue == 15) {
-            String output = "";
-            output += allowanceMap.getTelcoName + " offers a data allowance of ";
+        int allowance;
+        String output = "";
+
+        if (telcoName == "Smart") {
+            allowance = 15;
+            output = telcoName + " offers a data allowance of " + allowance + "GB for ₱" + money + " per month.";
             return output;
         }
-
-        if (allowanceValue){
-            return "";
+        if (telcoName == "Globe") {
+            allowance = 10;
+            output = telcoName + " offers a data allowance of " + allowance + "GB for ₱" + money + " per month.";
+            return output;
         }
+        if (telcoName == "Ditto") {
+            allowance = 8;
+            output = telcoName + " offers a data allowance of " + allowance + "GB for ₱" + money + " per month.";
+            return output;
+        }
+        else {
+            return null;
+        }
+
     }
 
 }
